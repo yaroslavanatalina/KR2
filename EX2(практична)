@@ -1,0 +1,54 @@
+# Клас Dictionary
+class Dictionary
+  attr_reader :data
+
+  def initialize(data = {})
+    @data = data
+  end
+
+  # Перевантаження оператора +
+  def +(other)
+    combined_data = @data.merge(other.data)
+    Dictionary.new(combined_data)
+  end
+
+  # Зручний вивід
+  def to_s
+    @data.to_s
+  end
+end
+
+# Функція для створення словника з введених даних
+def create_dictionary
+  puts "Скільки пар ключ-значення ви хочете додати?"
+  num_entries = gets.chomp.to_i
+
+  dict_data = {}
+  num_entries.times do |i|
+    print "Введіть ключ №#{i + 1}: "
+    key = gets.chomp
+    print "Введіть значення для ключа '#{key}': "
+    value = gets.chomp
+    dict_data[key] = value
+  end
+
+  Dictionary.new(dict_data)
+end
+
+# Основна програма
+def main
+  puts "Створюємо перший словник:"
+  dict1 = create_dictionary
+
+  puts "Створюємо другий словник:"
+  dict2 = create_dictionary
+
+  puts "Перший словник: #{dict1}"
+  puts "Другий словник: #{dict2}"
+
+  combined_dict = dict1 + dict2
+  puts "Об'єднаний словник: #{combined_dict}"
+end
+
+# Запуск програми
+main
