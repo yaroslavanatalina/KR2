@@ -1,0 +1,15 @@
+# Створення об'єкта Proc
+my_proc = Proc.new { |x| x * 2 }
+puts my_proc.call(5) # => 10
+
+# Створення об'єкта lambda
+my_lambda = ->(x) { x + 3 }
+puts my_lambda.call(7) # => 10
+
+# Зберігаємо блок через передавання у метод
+def save_block(&block)
+  block
+end
+
+stored_block = save_block { |x| x**2 }
+puts stored_block.call(4) # => 16
