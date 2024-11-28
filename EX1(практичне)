@@ -1,0 +1,59 @@
+# Базовий клас Figure
+class Figure
+  def area
+    raise NotImplementedError, "Цей метод повинен бути реалізований у підкласі"
+  end
+end
+
+# Клас Square
+class Square < Figure
+  def initialize(side)
+    @side = side
+  end
+
+  def area
+    @side**2
+  end
+end
+
+# Клас Triangle
+class Triangle < Figure
+  def initialize(base, height)
+    @base = base
+    @height = height
+  end
+
+  def area
+    0.5 * @base * @height
+  end
+end
+
+# Основна програма
+def main
+  puts "Оберіть фігуру для розрахунку площі:"
+  puts "1. Квадрат"
+  puts "2. Трикутник"
+  choice = gets.chomp.to_i
+
+  case choice
+  when 1
+    # Введення даних для квадрата
+    print "Введіть сторону квадрата: "
+    side = gets.chomp.to_f
+    square = Square.new(side)
+    puts "Площа квадрата: #{square.area}"
+  when 2
+    # Введення даних для трикутника
+    print "Введіть основу трикутника: "
+    base = gets.chomp.to_f
+    print "Введіть висоту трикутника: "
+    height = gets.chomp.to_f
+    triangle = Triangle.new(base, height)
+    puts "Площа трикутника: #{triangle.area}"
+  else
+    puts "Невірний вибір. Спробуйте ще раз."
+  end
+end
+
+# Запуск програми
+main
